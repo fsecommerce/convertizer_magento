@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Fsecommerce_Convertizer>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Fsecommerce_Convertizer>
+  </modules>
+</config>

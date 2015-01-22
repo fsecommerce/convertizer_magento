@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Fsecommerce_Convertizer>
+			<version>0.0.1</version>
+		</Fsecommerce_Convertizer>
+	</modules>
+	<frontend>
+        <routers>
+            <fsecommerce_convertizer>
+                <use>standard</use>
+                <args>
+                    <module>Fsecommerce_Convertizer</module>
+                    <frontName>convertizer</frontName>
+                </args>
+            </fsecommerce_convertizer>
+        </routers>
+    </frontend>
+</config>
