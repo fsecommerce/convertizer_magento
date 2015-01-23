@@ -1,10 +1,10 @@
 # Magento eCommerce Module for convertizer
-Magento Module to automatically handover products into your Magento Shopping basket.
+Magento Module to automatically handover products into your Shop-basket.
 <br> 
-After installation convertizer will be able to directly place items into your basket. With the help of this functionality your users will
-be forwarded to your shopping basket after they clicked on "add to basket" at your convertizer landing pages.
+After installation convertizer will be able to directly place items into your basket. With the help of this module users will
+be forwarded automatically to your basket after they clicked on "add to basket" at your convertizer landing pages. The related product will be already placed in the basket so that they can proceed with the checkout immediately.
 <br>
-With the help of this functionality your conversion rate will be increased and drop-off rates reduced.
+With the help of this module your conversion rate will be increased and drop-off rates reduced.
 <br>
 <h2>Usage</h2>
 <ol>
