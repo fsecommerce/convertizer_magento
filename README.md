@@ -6,7 +6,7 @@ be forwarded automatically to your basket after they clicked on "add to basket" 
 <br>
 With the help of this module your conversion rate will be increased and drop-off rates reduced.
 <br>
-<h2>Usage</h2>
+<h2>Installation Guide</h2>
 <ol>
 <li>Download the module as app folder</li>
 <li>Upload the app folder in your Magento</li>
