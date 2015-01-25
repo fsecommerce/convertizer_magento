@@ -4,6 +4,7 @@
  * Magento Modul for Convertizer App
  * http://convertizer-commerce.com
  * Version 0.1 beta
+ * TODO: add original url to add to cart link
  */ ?>
 <?php class Fsecommerce_Convertizer_AddController extends Mage_Core_Controller_Front_Action{
 	public function productAction(){
@@ -13,7 +14,6 @@
 			$_product 	= Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);  
 			if($_product && $_product->isSaleable()){
 				try{
-					$product 		= Mage::getModel('catalog/product')->load($_product->getId());
 					$cart 			= Mage::getModel('checkout/cart');
 					$cart->init();
 					$cart->addProduct($product, array( 'product_id' => $product->getId(), 'qty' => 1));
