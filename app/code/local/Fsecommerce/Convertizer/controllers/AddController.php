@@ -1,7 +1,7 @@
 <?php /*
  * FS eCommerce GmbH - Leipzig
  * http://fs-ecommerce.com
- * Magento Modul for Convertizer App
+ * Magento Module for Convertizer App
  * http://convertizer-commerce.com
  * Version 0.1 beta
  * TODO: add original url to add to cart link
