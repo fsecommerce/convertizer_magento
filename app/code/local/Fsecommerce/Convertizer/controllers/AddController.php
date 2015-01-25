@@ -1,3 +1,9 @@
+<?php /*
+ * FS eCommerce GmbH
+ * Magento Modul for Convertizer App
+ * http://convertizer-commerce.com
+ * Version 0.1 beta
+ */ ?>
 <?php class Fsecommerce_Convertizer_AddController extends Mage_Core_Controller_Front_Action{
 	public function productAction(){
 		$sku			= $this->getRequest()->getParam('sku');
