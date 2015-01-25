@@ -1,5 +1,6 @@
 <?php /*
  * FS eCommerce GmbH
+ * http://fs-ecommerce.com
  * Magento Modul for Convertizer App
  * http://convertizer-commerce.com
  * Version 0.1 beta
