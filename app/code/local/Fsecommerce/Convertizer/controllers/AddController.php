@@ -15,7 +15,7 @@
 					$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl();
 				}catch(Exception $e){
 					Mage::getSingleton('core/session')->addNotice('Produkt konnte nicht dem Warenkorb hinzugefügt werden.');
-  					$redirectUrl	= $product->getProductUrl();
+  					$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
 				}
 			}
 		}
