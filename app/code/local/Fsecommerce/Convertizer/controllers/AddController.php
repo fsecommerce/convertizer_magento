@@ -14,6 +14,7 @@
 			$_product 	= Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);  
 			if($_product && $_product->isSaleable()){
 				try{
+					$product 		= Mage::getModel('catalog/product')->load($_product->getId());
 					$cart 			= Mage::getModel('checkout/cart');
 					$cart->init();
 					$cart->addProduct($product, array( 'product_id' => $product->getId(), 'qty' => 1));
