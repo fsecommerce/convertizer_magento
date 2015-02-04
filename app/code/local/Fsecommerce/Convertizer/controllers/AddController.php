@@ -22,8 +22,17 @@
 					Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
 					$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl();
 				}catch(Exception $e){
-					Mage::getSingleton('core/session')->addNotice('Produkt konnte nicht dem Warenkorb hinzugefügt werden.');
-  					$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
+					if($this->getRequest()->getParam('url')){
+						$redirectUrl	= $this->getRequest()->getParam('url');
+					}else{
+						$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
+					}
+				}
+			}else{
+				if($this->getRequest()->getParam('url')){
+						$redirectUrl	= $this->getRequest()->getParam('url');
+				}else{
+					$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
 				}
 			}
 		}
