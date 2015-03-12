@@ -161,23 +161,34 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 	public function getGoogleShipping($product){
 		
 		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGoogleShipping();
-		if($attrCode){
-			$result = $product->getAttributeText($attrCode);
+		if($attrCode && $attrCode != "empty"){
+			$result = $product->getResource()->getAttribute($attrCode)
+			->getFrontend()->getValue($product);
 		}else{
 			return false;
 		}
-		return $result;
+		if($result){
+			return $result;
+		}else{
+			return false;
+		}
+		
 	}
 	
 	public function getGeneralShipping($product){
 		
 		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGeneralShipping();
-		if($attrCode){
-			$result = $product->getAttributeText($attrCode);
+		if($attrCode && $attrCode != "empty"){
+			$result = $product->getResource()->getAttribute($attrCode)
+			->getFrontend()->getValue($product);
 		}else{
 			return false;
 		}
-		return $result;
+		if($result){
+			return $result;
+		}else{
+			return false;
+		}
 	}
 	
 	public function getParentSKU($product){

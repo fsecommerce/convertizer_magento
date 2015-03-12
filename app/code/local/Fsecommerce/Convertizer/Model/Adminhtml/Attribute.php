@@ -6,7 +6,7 @@ class Fsecommerce_Convertizer_Model_Adminhtml_Attribute extends Mage_Adminhtml_M
 
     public function toOptionArray()
     {
-        $options = array();
+        $options = array('empty'=>'AAA Empty');
 		
 		
 		$attributes = Mage::getResourceModel('catalog/product_attribute_collection')
