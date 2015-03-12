@@ -1,11 +1,3 @@
-<?php /*
- * FS eCommerce GmbH - Leipzig
- * http://fs-ecommerce.com
- * Magento Module for Convertizer App
- * http://convertizer-commerce.com
- * Version 0.1 beta
- * TODO: add original url to add to cart link
- */ ?>
 <?php class Fsecommerce_Convertizer_AddController extends Mage_Core_Controller_Front_Action{
 	public function productAction(){
 		$sku			= $this->getRequest()->getParam('sku');
@@ -22,17 +14,14 @@
 					Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
 					$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl();
 				}catch(Exception $e){
-					if($this->getRequest()->getParam('url')){
-						$redirectUrl	= $this->getRequest()->getParam('url');
+					Mage::log($e->getMessage(),null,'convertizer.log');
+					Mage::getSingleton('core/session')->addNotice('Produkt konnte nicht dem Warenkorb hinzugefügt werden. Bitte prüfen Sie ggf. weitere Optionen.');
+					$productUrl		= $this->getRequest()->getParam('orig_link');
+					if($productUrl){
+						$redirectUrl	= $productUrl;
 					}else{
 						$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
 					}
-				}
-			}else{
-				if($this->getRequest()->getParam('url')){
-						$redirectUrl	= $this->getRequest()->getParam('url');
-				}else{
-					$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
 				}
 			}
 		}

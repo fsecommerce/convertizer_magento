@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<fsecommerce_convertizer translate="label" module="fsecommerce_convertizer">
+			<label><![CDATA[<img src="http://fs-ecommerce.com/convertizer/convertizer.png" alt="Convertizer" height="30" style="vertical-align:middle;margin-left:-1px;margin-right: 10px;"/>]]>Convertizer</label>
+			<sort_order>0</sort_order>
+		</fsecommerce_convertizer>
+	</tabs>
+    <sections>
+        <fsecommerce_convertizer translate="label" module="fsecommerce_convertizer">
+            <label>Convertizer Settings</label>
+            <tab>fsecommerce_convertizer</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <feed translate="label">
+					<label>Feed Settings</label>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<check translate="label">
+							<label>Generate Convertizer Feed</label>
+							<frontend_type>button</frontend_type>
+							<frontend_model>fsecommerce_convertizer/adminhtml_feed</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</check>
+					</fields>
+				</feed>
+				<tracking>
+					<label>Convertizer Tracking</label>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+                            <label>Activate Tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<track translate="label">
+							<label>Convertizer Tracking Code</label>
+							<frontend_type>text</frontend_type>
+							<comment><![CDATA[<b>Type in your Convertizer Tracking ID</b>]]></comment>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</track>
+					</fields>
+				</tracking>
+            </groups>
+        </fsecommerce_convertizer>
+    </sections>
+</config>

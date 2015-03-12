@@ -13,7 +13,3 @@ With the help of this module your conversion rate will be increased and drop-off
 <li>Drop your backend cache of Magento</li>
 <li>Start earning more money with convertizer</li>
 </ol>
-
-<h2>Please note: </h2>
-if your product feed contains product ID's instead of sku please write an email to: <strong>support@convertizer.com</strong><br/>
-We will take care of it right away!

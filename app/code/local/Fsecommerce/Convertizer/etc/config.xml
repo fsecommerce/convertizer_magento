@@ -15,5 +15,60 @@
                 </args>
             </fsecommerce_convertizer>
         </routers>
+		<layout>
+			<updates>
+				<fsecommerce_convertizer>
+					<file>fsecommerce_convertizer.xml</file>
+				</fsecommerce_convertizer>
+			</updates>
+		</layout>
     </frontend>
+	 <global>
+        <helpers>
+            <fsecommerce_convertizer>
+                <class>Fsecommerce_Convertizer_Helper</class>
+            </fsecommerce_convertizer>
+        </helpers>
+        <blocks>
+            <fsecommerce_convertizer>
+                <class>Fsecommerce_Convertizer_Block</class>
+            </fsecommerce_convertizer>
+        </blocks>
+    </global>
+	<admin>
+		<routers>
+			<fsecommerce_convertizer>
+				<use>admin</use>
+				<args>
+					 <modules>
+                        <fsecommerce_convertizer after="Mage_Adminhtml">Fsecommerce_Convertizer</fsecommerce_convertizer>
+                    </modules>
+				</args>
+			</fsecommerce_convertizer>
+		</routers>
+	</admin>
+	<adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <fsecommerce_convertizer>
+                                            <title>Fsecommerce_Convertizer</title>
+                                        </fsecommerce_convertizer>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>
