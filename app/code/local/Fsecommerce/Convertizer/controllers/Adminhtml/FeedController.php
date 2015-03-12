@@ -12,14 +12,12 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 		$collection = Mage::getModel('catalog/product')->getCollection();
 		#$collection->addFieldToFilter('visibility', Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH);
 		$collection->addFieldToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
-	
+		
+		#die('total: ' . count($collection));
 
 		 // get the total amout of entries
-		 
 		$entries    = count($collection);
-		
 		// delete files first
-		
 		$files = array();
 		foreach(scandir('./') as $file)
 		{
@@ -33,6 +31,8 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 				'parent_id',
 				'variant_attribute',
 				'variant_attribute_value',
+				'shipping_status',
+				'shipping',
 				'title',
 				'description',
 				'brand',
@@ -64,6 +64,7 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 		);
 
 		$i = 0;
+		
 	
 		foreach($collection as $product)
 		{
@@ -84,6 +85,8 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 				$this->getParentSKU($product),
 				$this->getVariantsLabel($product),
 				$this->getVariantsValue($product),
+				$this->getGoogleShipping($product),
+				$this->getGeneralShipping($product),
 				$product->getName(),
 				strip_tags($product->getDescription()),
 				$product->getAttributeText('manufacturer'),
@@ -153,6 +156,28 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 			if(file_exists($file)) unlink($file);
 		}
 
+	}
+	
+	public function getGoogleShipping($product){
+		
+		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGoogleShipping();
+		if($attrCode){
+			$result = $product->getAttributeText($attrCode);
+		}else{
+			return false;
+		}
+		return $result;
+	}
+	
+	public function getGeneralShipping($product){
+		
+		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGeneralShipping();
+		if($attrCode){
+			$result = $product->getAttributeText($attrCode);
+		}else{
+			return false;
+		}
+		return $result;
 	}
 	
 	public function getParentSKU($product){

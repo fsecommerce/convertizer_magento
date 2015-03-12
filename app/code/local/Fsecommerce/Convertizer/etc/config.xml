@@ -34,6 +34,11 @@
                 <class>Fsecommerce_Convertizer_Block</class>
             </fsecommerce_convertizer>
         </blocks>
+		<models>
+            <fsecommerce_convertizer>
+                <class>Fsecommerce_Convertizer_Model</class>
+            </fsecommerce_convertizer>   
+        </models>
     </global>
 	<admin>
 		<routers>
