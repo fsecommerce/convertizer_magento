@@ -1,0 +1,33 @@
+<?php
+/**
+ * 
+ */
+?>
+<?php
+	$_order    			= Mage::getModel('sales/order')->load(Mage::getSingleton('checkout/session')->getLastOrderId());
+	$_orderIncrement 	= Mage::getSingleton('checkout/session')->getLastRealOrderId();
+	$_items    			= $_order->getAllItems();
+	$helper				= Mage::helper('fsecommerce_convertizer');
+?>
+
+<?php $total = $_order->getData('grand_total')-$_order->getTaxAmount()-($_order->getShippingAmount() + $_order->getShippingTaxAmount()); ?>
+
+<script type="text/javascript">
+/* FS eCommerce Convertizer Tracking Code*/
+//<![CDATA[
+	var trackingid 	= '<?php echo $helper->getTrackingCode() ?>'; //CUSTOMER TRACKING ID
+	var amount		= '<?php echo $total; ?>'; //GRAND TOTAL - TAX AMOUNT - SHIPPING AMOUNT
+	var ordertype	= 1; //ORDER TYPE
+        var orderid = '<?php echo $_orderIncrement; ?>'; //ORDER ID
+	(function(){
+		var js = document.createElement('script');
+			js.type = 'text/javascript';
+			js.async = true;
+			js.src = ('https:' == document.location.protocol ?
+'https://' : 'http://') + 'convertizer.com/static/convertizer.js';
+		var tag = document.getElementsByTagName('script')[0];
+		tag.parentNode.insertBefore(js, tag);
+	})();
+//]]>
+/* Convertizer Tracking Code*/
+</script>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+	<checkout_onepage_success>
+		<reference name="before_body_end">
+			<block type="core/template" name="fsecommerce.convertizer.tracking" template="fse/convertizer/convertizer_tracking.phtml"/>
+		</reference>
+	</checkout_onepage_success>
+</layout>
