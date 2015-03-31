@@ -11,8 +11,19 @@
 					$cart->init();
 					$cart->addProduct($product, array( 'product_id' => $product->getId(), 'qty' => 1));
 					$cart->save();
+					$params = $this->getRequest()->getParams();
+					unset($params[sku]);
+					unset($params[orig_link]);
+					Mage::log($params, NULL,'params.log');
 					Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
-					$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl();
+					$addparams = "?";
+					
+					foreach($params as $key => $param){
+						$addparams .= $key . '=' . $param . '&';
+					}
+					$addparams = rtrim($addparams, "&");
+					$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl() . $addparams;
+					Mage::log($redirectUrl, NULL,'params.log');
 				}catch(Exception $e){
 					Mage::log($e->getMessage(),null,'convertizer.log');
 					Mage::getSingleton('core/session')->addNotice('Produkt konnte nicht dem Warenkorb hinzugefügt werden. Bitte prüfen Sie ggf. weitere Optionen.');

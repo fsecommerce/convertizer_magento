@@ -40,6 +40,14 @@
             </fsecommerce_convertizer>   
         </models>
     </global>
+	<crontab>
+        <jobs>
+            <fsecommerce_convertizer>
+                <schedule><cron_expr>*/60 * * * *</cron_expr></schedule>
+                <run><model>fsecommerce_convertizer/feed::run</model></run>
+            </fsecommerce_convertizer>
+        </jobs>
+    </crontab>
 	<admin>
 		<routers>
 			<fsecommerce_convertizer>

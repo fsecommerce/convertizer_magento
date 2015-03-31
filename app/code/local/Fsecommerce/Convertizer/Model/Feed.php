@@ -1,9 +1,8 @@
 <?php
 
-class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Controller_Action
+class Fsecommerce_Convertizer_Model_Feed
 {
-
-    public function generateAction()
+    public function run()
     {
 		
        // set amount of entries per temp csv
@@ -193,6 +192,9 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 	
 	public function getParentSKU($product){
 		$parentArray = $this->getParentProduct($product);
+		if(!isset($parentArray)){
+			return false;
+		}
 		foreach ($parentArray as $parent){
 			if($parent){
 			$parentSku 	= $parent->getSku();
@@ -303,4 +305,6 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 
 		return str_repeat('0', $zero_length) . $i;
 	}
+
+    
 }
