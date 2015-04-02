@@ -14,7 +14,6 @@
 					$params = $this->getRequest()->getParams();
 					unset($params[sku]);
 					unset($params[orig_link]);
-					Mage::log($params, NULL,'params.log');
 					Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
 					$addparams = "?";
 					

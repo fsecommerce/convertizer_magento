@@ -8,10 +8,26 @@ class Fsecommerce_Convertizer_Model_Feed
        // set amount of entries per temp csv
 		$chunksize = 500;
 		// get the products collection
-		$collection = Mage::getModel('catalog/product')->getCollection();
+		
+		
+		if(Mage::helper('fsecommerce_convertizer')->getCategoryEnabled()){
+			
+			$catCollection = "";
+			
+			$categoryids = explode(",",Mage::helper('fsecommerce_convertizer')->getCategory());
+
+			$collection = Mage::getResourceModel('catalog/product_collection')
+				->joinField('category_id','catalog/category_product','category_id','product_id=entity_id',null,'left')
+				->addAttributeToFilter('category_id', array('in' => $categoryids));
+				$collection->getSelect()->group('e.entity_id');
+		}else{
+			$collection = Mage::getModel('catalog/product')->getCollection();	
+		}
+		
+		
 		#$collection->addFieldToFilter('visibility', Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH);
 		$collection->addFieldToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
-		
+		$collection->addFieldToFilter('category_id', Mage::helper('fsecommerce_convertizer')->getCategory());
 		#die('total: ' . count($collection));
 
 		 // get the total amout of entries

@@ -30,8 +30,6 @@ class Fsecommerce_Convertizer_Block_Adminhtml_Feed extends Mage_Adminhtml_Block_
     public function generateFeed()
     {	
 		return Mage::helper('adminhtml')->getUrl('convertizer/adminhtml_feed/generate');
-       // $data = $this->getFeedData();
-		//file_put_contents(sprintf('%s/convertizer', Mage::getBaseDir('media')) . '/' . 'feed_[' . date('Y-m-d_H-i-s', time()) . '].csv', $data);
     }
 	
 	public function getFeedData(){

@@ -3,19 +3,15 @@
 ?>
 <script type="text/javascript">
     //<![CDATA[
-//jQuery(document).ready(function($){
     function generateconvertizerfeed() {
         new Ajax.Request('<?php echo $this->generateFeed() ?>', {
             method:     'get',
              onSuccess: function(transport){
-				 if (transport.responseText){
 					 var resultHtml = "<div style='background:#fff;padding:20px;margin-top:20px;'><p><?php echo $this->__('Your Feed has been generated!'); ?></p><p><?php echo $this->__('Find your feed here:'); ?> <a href='<?php echo $mediaURL; ?>convertizer/convertizer_feed.csv'><?php echo $mediaURL; ?>convertizer/convertizer_feed.csv</a></p></div>";
 					 document.getElementById("feedresult").innerHTML=resultHtml; 
-				  }
              }
         });
     }
-//});
     //]]>
 </script>
  
