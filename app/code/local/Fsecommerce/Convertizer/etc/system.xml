@@ -27,8 +27,8 @@
 							<frontend_type>button</frontend_type>
 							<frontend_model>fsecommerce_convertizer/adminhtml_feed</frontend_model>
 							<sort_order>10</sort_order>
-							<show_in_default>1</show_in_default>
-							<show_in_website>1</show_in_website>
+							<show_in_default>0</show_in_default>
+							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
 						</check>
 						<shipping_google translate="label">
@@ -69,9 +69,37 @@
 						</category_filter>
 					</fields>
 				</feed>
+				<cron>
+					<label>Cron Settings</label>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<cron_enabled translate="label">
+                            <label>Activate Cron</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cron_enabled>
+						<default_store translate="label">
+							<label>Set Cronjob Default Store</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_store</source_model>
+							<comment><![CDATA[<b>Set the default Store for Product Export by Cron</b>]]></comment>
+							<sort_order>20</sort_order>
+							<show_in_default>0</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>1</show_in_store>
+						</default_store>
+					</fields>
+				</cron>
 				<tracking>
 					<label>Tracking</label>
-					<sort_order>2</sort_order>
+					<sort_order>3</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
 					<show_in_store>1</show_in_store>

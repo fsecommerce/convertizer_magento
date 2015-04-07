@@ -7,23 +7,34 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
     {
 		
        // set amount of entries per temp csv
-		$chunksize = 500;
+		$chunksize 		= 500;
+		$storeId   		= Mage::helper('fsecommerce_convertizer')->getStore();
+		// get the store
+		$defaultStore   = Mage::app()
+							->getWebsite()
+							->getDefaultGroup()
+							->getDefaultStoreId();
+		if(!isset($storeId) || $storeId = ""){
+			$storeId = $defaultStore;
+		}
+		
+		
 		// get the products collection
 		
 		
 		if(Mage::helper('fsecommerce_convertizer')->getCategoryEnabled()){
 			
-			$catCollection = "";
-			
 			$categoryids = explode(",",Mage::helper('fsecommerce_convertizer')->getCategory());
 
 			$collection = Mage::getResourceModel('catalog/product_collection')
+				->setStoreId($storeId)
 				->joinField('category_id','catalog/category_product','category_id','product_id=entity_id',null,'left')
 				->addAttributeToFilter('category_id', array('in' => $categoryids));
 				
 				$collection->getSelect()->group('e.entity_id');
 		}else{
-			$collection = Mage::getModel('catalog/product')->getCollection();	
+			$collection = Mage::getModel('catalog/product')->getCollection()
+			->setStoreId($storeId);
 		}
 		
 		
