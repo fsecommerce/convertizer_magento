@@ -22,6 +22,7 @@ class Fsecommerce_Convertizer_Model_Feed
 			$storeId = $defaultStore;
 		}
 		
+		
 		// get the products collection
 		
 		
@@ -40,12 +41,9 @@ class Fsecommerce_Convertizer_Model_Feed
 			$collection = Mage::getModel('catalog/product')->getCollection()
 			->setStoreId($storeId);
 		}
-		
-		
-		#$collection->addFieldToFilter('visibility', Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH);
+	
 		$collection->addFieldToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
-		$collection->addFieldToFilter('category_id', Mage::helper('fsecommerce_convertizer')->getCategory());
-		#die('total: ' . count($collection));
+		
 
 		 // get the total amout of entries
 		$entries    = count($collection);
@@ -57,6 +55,8 @@ class Fsecommerce_Convertizer_Model_Feed
 			if(file_exists($file)) unlink($file);
 		}
 
+		
+		
 		$data = array(
 			array(
 				'id',
@@ -299,7 +299,7 @@ class Fsecommerce_Convertizer_Model_Feed
 	public function getParentSKU($product){
 		$parentArray = $this->getParentProduct($product);
 		
-		if(!count($parentArray) || $parentArray){
+		if(!count($parentArray) || !$parentArray){
 			return false;
 		}
 		
@@ -325,7 +325,7 @@ class Fsecommerce_Convertizer_Model_Feed
 			$parentgroupedIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($product->getId());
 			$parentconfigIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
 			
-			if(count($parentconfigIds)){
+			if(!count($parentconfigIds)){
 				return false;
 			}else{
 				foreach ($parentconfigIds as $parentID){
@@ -341,6 +341,11 @@ class Fsecommerce_Convertizer_Model_Feed
 		// first get the parent Sku
 		
 		$parentArray = $this->getParentProduct($product);
+		
+		if(!count($parentArray) || !$parentArray){
+			return false;
+		}
+		
 		$result = "";
 		foreach ($parentArray as $parent){
 			
@@ -360,6 +365,11 @@ class Fsecommerce_Convertizer_Model_Feed
 	public function getVariantsValue($product){
 			
 		$parentArray = $this->getParentProduct($product);
+		
+		if(!count($parentArray) || !$parentArray){
+			return false;
+		}
+		
 		$result = "";
 		foreach($parentArray as $parent){
 			if($parent){
