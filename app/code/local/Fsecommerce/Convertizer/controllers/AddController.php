@@ -14,7 +14,6 @@
 					$params = $this->getRequest()->getParams();
 					unset($params[sku]);
 					unset($params[orig_link]);
-					Mage::log($params, NULL,'params.log');
 					Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
 					$addparams = "?";
 					
@@ -23,9 +22,7 @@
 					}
 					$addparams = rtrim($addparams, "&");
 					$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl() . $addparams;
-					Mage::log($redirectUrl, NULL,'params.log');
 				}catch(Exception $e){
-					Mage::log($e->getMessage(),null,'convertizer.log');
 					Mage::getSingleton('core/session')->addNotice('Produkt konnte nicht dem Warenkorb hinzugefügt werden. Bitte prüfen Sie ggf. weitere Optionen.');
 					$productUrl		= $this->getRequest()->getParam('orig_link');
 					if($productUrl){

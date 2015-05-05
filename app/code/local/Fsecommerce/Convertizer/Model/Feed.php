@@ -65,6 +65,11 @@ class Fsecommerce_Convertizer_Model_Feed
 				'variant_attribute_value',
 				'shipping_status',
 				'shipping',
+				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute01()),
+				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute02()),
+				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute03()),
+				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute04()),
+				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute05()),
 				'title',
 				'description',
 				'brand',
@@ -119,6 +124,11 @@ class Fsecommerce_Convertizer_Model_Feed
 				$this->getVariantsValue($product),
 				$this->getGoogleShipping($product),
 				$this->getGeneralShipping($product),
+				$this->getCustomAttr01($product),
+				$this->getCustomAttr02($product),
+				$this->getCustomAttr03($product),
+				$this->getCustomAttr04($product),
+				$this->getCustomAttr05($product),
 				$product->getName(),
 				strip_tags($product->getDescription()),
 				$product->getAttributeText('manufacturer'),
@@ -190,6 +200,69 @@ class Fsecommerce_Convertizer_Model_Feed
 
 	}
 	
+	public function getAttributeLabel($attributecode){
+				$attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')
+				->setCodeFilter($attributecode)
+				->getFirstItem();	
+				$result = $attributeInfo->getFrontendLabel();
+				return $result;
+	}
+	
+	public function getCustomAttr01($product){
+		$customAttribute = Mage::helper('fsecommerce_convertizer')->getCustomAttribute01();
+		if($customAttribute && $customAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($customAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getCustomAttr02($product){
+		$customAttribute = Mage::helper('fsecommerce_convertizer')->getCustomAttribute02();
+		if($customAttribute && $customAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($customAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getCustomAttr03($product){
+		$customAttribute = Mage::helper('fsecommerce_convertizer')->getCustomAttribute03();
+		if($customAttribute && $customAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($customAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getCustomAttr04($product){
+		$customAttribute = Mage::helper('fsecommerce_convertizer')->getCustomAttribute04();
+		if($customAttribute && $customAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($customAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getCustomAttr05($product){
+		$customAttribute = Mage::helper('fsecommerce_convertizer')->getCustomAttribute05();
+		if($customAttribute && $customAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($customAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
 	public function getGoogleShipping($product){
 		
 		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGoogleShipping();
@@ -225,36 +298,43 @@ class Fsecommerce_Convertizer_Model_Feed
 	
 	public function getParentSKU($product){
 		$parentArray = $this->getParentProduct($product);
-		if(!isset($parentArray)){
+		
+		if(!count($parentArray) || $parentArray){
 			return false;
 		}
-		foreach ($parentArray as $parent){
-			if($parent){
-			$parentSku 	= $parent->getSku();
-			return $parentSku;	
-			}else{
-				return false;
+		
+		$parentSkuArray = array();
+		if(count($parentArray) || $parentArray){
+			foreach($parentArray as $parent){
+					$parentSku 	= $parent->getSku();
+					array_push($parentSkuArray, $parentSku);	
 			}
+		}
+		if( count($parentSkuArray) > 0){
+			$parentSkuArray = implode(",", $parentSkuArray);
+			$parentSkuArray = rtrim($parentSkuArray, ",");
+			return $parentSkuArray;
+		}else{
+			return false;
 		}
 	}
 		
 	public function getParentProduct($product){
 		$parrentArray = array();
 		if($product->getTypeId() == "simple"){
-				$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($product->getId());
-			if(!$parentIds){
-				$parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
-				if(!$parentIds){
-					return false;
-				}else{
-					foreach ($parentIds as $parentID){
-						$parent 	= Mage::getModel('catalog/product')->load($parentID); 
-						array_push($parrentArray,$parent);
-						return $parrentArray;
-					}
+			$parentgroupedIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($product->getId());
+			$parentconfigIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
+			
+			if(count($parentconfigIds)){
+				return false;
+			}else{
+				foreach ($parentconfigIds as $parentID){
+					$parent 	= Mage::getModel('catalog/product')->load($parentID); 
+					array_push($parrentArray,$parent);
 				}
 			}
 		}
+		return $parrentArray;
 	}
 	
 	public function getVariantsLabel($product){
