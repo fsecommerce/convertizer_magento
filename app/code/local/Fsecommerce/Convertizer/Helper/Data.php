@@ -4,7 +4,6 @@ class Fsecommerce_Convertizer_Helper_Data extends Mage_Core_Helper_Abstract{
 	
     const XML_PATH_ENABLED   			= 'fsecommerce_convertizer/tracking/enabled'; 
 	const XML_PATH_TRACKINGCODE 		= 'fsecommerce_convertizer/tracking/track';
-	const XML_PATH_SHIPPINGGOOGLE 		= 'fsecommerce_convertizer/feed/shipping_google';
 	const XML_PATH_SHIPPINGGENERAL 		= 'fsecommerce_convertizer/feed/shipping_general';
 	
 	const XML_PATH_CUSTOMATTR01 		= 'fsecommerce_convertizer/feed/custom_attr_01';
@@ -30,7 +29,6 @@ class Fsecommerce_Convertizer_Helper_Data extends Mage_Core_Helper_Abstract{
 	public function getCustomAttribute04(){return Mage::getStoreConfig( self::XML_PATH_CUSTOMATTR04 );}
 	public function getCustomAttribute05(){return Mage::getStoreConfig( self::XML_PATH_CUSTOMATTR05 );}
 	
-	public function getGoogleShipping(){return Mage::getStoreConfig( self::XML_PATH_SHIPPINGGOOGLE );}
 	public function getGeneralShipping(){return Mage::getStoreConfig( self::XML_PATH_SHIPPINGGENERAL );}
 	public function getCategoryEnabled(){return Mage::getStoreConfig( self::XML_PATH_CATEGORY_ENABLED );}
 	public function getCategory(){return Mage::getStoreConfig( self::XML_PATH_CATEGORY );}

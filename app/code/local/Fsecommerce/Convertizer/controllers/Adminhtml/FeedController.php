@@ -68,7 +68,6 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 				'parent_id',
 				'variant_attribute',
 				'variant_attribute_value',
-				'shipping_status',
 				'shipping',
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute01()),
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute02()),
@@ -128,7 +127,6 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 				$this->getParentSKU($product),
 				$this->getVariantsLabel($product),
 				$this->getVariantsValue($product),
-				$this->getGoogleShipping($product),
 				$this->getGeneralShipping($product),
 				$this->getCustomAttr01($product),
 				$this->getCustomAttr02($product),
@@ -270,22 +268,7 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 		}
 	}
 	
-	public function getGoogleShipping($product){
-		
-		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGoogleShipping();
-		if($attrCode && $attrCode != "empty"){
-			$result = $product->getResource()->getAttribute($attrCode)
-			->getFrontend()->getValue($product);
-		}else{
-			return false;
-		}
-		if($result){
-			return $result;
-		}else{
-			return false;
-		}
-		
-	}
+	
 	
 	public function getGeneralShipping($product){
 		
