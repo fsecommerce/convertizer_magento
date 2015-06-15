@@ -44,7 +44,16 @@ class Fsecommerce_Convertizer_Model_Feed
 	
 		$collection->addFieldToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
 		
+		$producttypeids = Mage::helper('fsecommerce_convertizer')->getProducttype();
+		
+		$producttypeids = explode(",",$producttypeids);
+		
+		$collection->addAttributeToFilter('type_id', array('in' => $producttypeids));
 
+		if(!Mage::helper('fsecommerce_convertizer')->getImageFilterEnabled()){
+			$collection->addAttributeToFilter('image', array('neq' => 'no_selection'));
+		}
+		
 		 // get the total amout of entries
 		$entries    = count($collection);
 		// delete files first

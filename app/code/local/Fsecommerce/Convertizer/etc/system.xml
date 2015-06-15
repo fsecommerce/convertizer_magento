@@ -113,6 +113,24 @@
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</category_filter>
+						<product_filter translate="label">
+							<label>Allow Product Types for Export</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_producttype</source_model>
+							<sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</product_filter>
+						<image_filter_enabled translate="label">
+                            <label>Export Products Without Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_filter_enabled>
 					</fields>
 				</feed>
 				<cron>

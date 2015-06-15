@@ -49,17 +49,19 @@
         </jobs>
     </crontab>
 	<admin>
-		<routers>
-			<fsecommerce_convertizer>
-				<use>admin</use>
-				<args>
-					 <modules>
-                        <fsecommerce_convertizer after="Mage_Adminhtml">Fsecommerce_Convertizer</fsecommerce_convertizer>
+        <routers>
+            <fsecommerce_convertizer>
+            	<use>admin</use>
+                <args>
+                	<frontName>convertizer</frontName>
+					<module>Fsecommerce_Convertizer</module>
+                    <modules>
+                        <Fsecommerce_Convertizer before="Mage_Adminhtml">Fsecommerce_Convertizer_Adminhtml</Fsecommerce_Convertizer>
                     </modules>
-				</args>
-			</fsecommerce_convertizer>
-		</routers>
-	</admin>
+                </args>
+            </fsecommerce_convertizer>
+        </routers>
+    </admin>
 	<adminhtml>
         <acl>
             <resources>
