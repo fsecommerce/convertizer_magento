@@ -95,6 +95,7 @@ class Fsecommerce_Convertizer_Model_Feed
 				'link',
 				'price',
 				'sale_price',
+				'no_singlepage'
 			)
 		);
 
@@ -152,6 +153,7 @@ class Fsecommerce_Convertizer_Model_Feed
 				$BaseURL . $product->getUrlPath(),
 				$product->getPrice(),
 				$product->getFinalPrice() != $product->getPrice() ? $product->getFinalPrice() : '',
+				$this->getExcludeOptions($product)
 			);
 
 			if($i % $chunksize == 0 || $i == $entries)
@@ -453,6 +455,20 @@ class Fsecommerce_Convertizer_Model_Feed
 		}
 		$result = rtrim($result, ",");
 		return $result;
+	}
+	
+	public function getExcludeOptions($product){
+		if(Mage::helper('fsecommerce_convertizer')->excludeOptions()){
+			$opts = Mage::getSingleton('catalog/product_option')->getProductOptionCollection($product);
+			$optsSize = $opts->getSize();
+			if($optsSize){
+				return '1';
+			}else{
+				return '';
+			}
+		}else{
+			return '';
+		}
 	}
 	
 	public function joinFiles(array $files, $result) {
