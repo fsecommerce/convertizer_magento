@@ -28,6 +28,7 @@ class Fsecommerce_Convertizer_Helper_Data extends Mage_Core_Helper_Abstract{
 	const XML_PATH_STORE 				= 'fsecommerce_convertizer/cron/default_store';
 	const XML_PATH_CRON_ENABLED 		= 'fsecommerce_convertizer/cron/cron_enabled';
 	
+	const XML_PATH_EXCLUDE_OPTIONS 		= 'fsecommerce_convertizer/feed/exclude_options';
 	
 	public function isEnabled(){return Mage::getStoreConfig( self::XML_PATH_ENABLED );}
 	public function getTrackingCode(){return Mage::getStoreConfig( self::XML_PATH_TRACKINGCODE );}
@@ -54,4 +55,6 @@ class Fsecommerce_Convertizer_Helper_Data extends Mage_Core_Helper_Abstract{
 	public function getCategory(){return Mage::getStoreConfig( self::XML_PATH_CATEGORY );}
 	public function getStore(){return Mage::getStoreConfig( self::XML_PATH_STORE );}
 	public function isCronEnabled(){return Mage::getStoreConfig( self::XML_PATH_CRON_ENABLED );}
+	
+	public function excludeOptions(){return Mage::getStoreConfig( self::XML_PATH_EXCLUDE_OPTIONS );}
 }
