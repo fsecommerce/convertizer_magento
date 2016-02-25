@@ -16,8 +16,7 @@
             <show_in_store>1</show_in_store>
             <groups>
                 <feed translate="label">
-					<label>Feed Settings</label>
-					<comment>Configure the module as you need. Read the comments carefully. If you want to generate the feed directly choose a storeview first to make the button appear.</comment>
+					<label>Feed Settings (choose storeview to generate feed by click)</label>
 					<sort_order>1</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
@@ -32,9 +31,17 @@
 							<show_in_website>0</show_in_website>
 							<show_in_store>1</show_in_store>
 						</check>
+						<shipping_google translate="label">
+							<label>Attribute for Google Shipping Description</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</shipping_google>
 						<shipping_general translate="label">
 							<label>Attribute for General Shipping Values</label>
-							<comment>the attribute that holds your shipping info eg in the google style (DE::Ground:0.0000) or just the shipper of the product</comment>
 							<frontend_type>select</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
 							<sort_order>30</sort_order>
@@ -43,8 +50,7 @@
 							<show_in_store>1</show_in_store>
 						</shipping_general>
 						<custom_attr_01 translate="label">
-							<label>Custom Attribut 01</label>
-							<comment>Choose a custom attribute to be shown in tab style on your landingpage</comment>
+							<label>Custom Attribut to Show 01</label>
 							<frontend_type>select</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
 							<sort_order>40</sort_order>
@@ -53,8 +59,7 @@
 							<show_in_store>1</show_in_store>
 						</custom_attr_01>
 						<custom_attr_02 translate="label">
-							<label>Custom Attribut 02</label>
-							<comment>Choose a custom attribute to be shown in tab style on your landingpage</comment>
+							<label>Custom Attribut to Show 02</label>
 							<frontend_type>select</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
 							<sort_order>50</sort_order>
@@ -63,8 +68,7 @@
 							<show_in_store>1</show_in_store>
 						</custom_attr_02>
 						<custom_attr_03 translate="label">
-							<label>Custom Attribut 03</label>
-							<comment>Choose a custom attribute to be shown in tab style on your landingpage</comment>
+							<label>Custom Attribut to Show 03</label>
 							<frontend_type>select</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
 							<sort_order>60</sort_order>
@@ -73,8 +77,7 @@
 							<show_in_store>1</show_in_store>
 						</custom_attr_03>
 						<custom_attr_04 translate="label">
-							<label>Custom Attribut 04</label>
-							<comment>Choose a custom attribute to be shown in tab style on your landingpage</comment>
+							<label>Custom Attribut to Show 04</label>
 							<frontend_type>select</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
 							<sort_order>70</sort_order>
@@ -83,8 +86,7 @@
 							<show_in_store>1</show_in_store>
 						</custom_attr_04>
 						<custom_attr_05 translate="label">
-							<label>Custom Attribut 05</label>
-							<comment>Choose a custom attribute to be shown in tab style on your landingpage</comment>
+							<label>Custom Attribut to Show 05</label>
 							<frontend_type>select</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
 							<sort_order>80</sort_order>
@@ -92,12 +94,81 @@
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</custom_attr_05>
+						<additional_attr_01 translate="label">
+							<label>Additional Attribut 01</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_01>
+						<additional_attr_02 translate="label">
+							<label>Additional Attribut 02</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_02>
+						<additional_attr_03 translate="label">
+							<label>Additional Attribut 03</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_03>
+						<additional_attr_04 translate="label">
+							<label>Additional Attribut 04</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_04>
+						<additional_attr_05 translate="label">
+							<label>Additional Attribut 05</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_05>
+						<product_category translate="label">
+							<label>Product Category Tree</label>
+							<comment>Choose the attribute that holds the products category tree (cat > subcat ...)</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>140</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</product_category>
+						<keywords translate="label">
+							<label>Keyword Attribut</label>
+							<comment>Choose an attribute which contains keywords for the product</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>150</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</keywords>
 						<category_filter_enabled translate="label">
                             <label>Activate Category Filter</label>
-							<comment>Activate this if you only want products from specific categories to be exported</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>90</sort_order>
+                            <sort_order>160</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -107,30 +178,11 @@
 							<depends><category_filter_enabled>1</category_filter_enabled></depends>
 							<frontend_type>multiselect</frontend_type>
 							<source_model>fsecommerce_convertizer/adminhtml_category</source_model>
-							<sort_order>100</sort_order>
+							<sort_order>170</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</category_filter>
-						<product_filter translate="label">
-							<label>Allow Product Types for Export</label>
-							<frontend_type>multiselect</frontend_type>
-							<source_model>fsecommerce_convertizer/adminhtml_producttype</source_model>
-							<sort_order>110</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</product_filter>
-						<image_filter_enabled translate="label">
-                            <label>Export Products Without Images</label>
-							<comment>Choose Yes if you want to allow products without images to be exported (not recommended)</comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>120</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </image_filter_enabled>
 					</fields>
 				</feed>
 				<cron>

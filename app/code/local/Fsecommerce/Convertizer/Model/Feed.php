@@ -44,16 +44,7 @@ class Fsecommerce_Convertizer_Model_Feed
 	
 		$collection->addFieldToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
 		
-		$producttypeids = Mage::helper('fsecommerce_convertizer')->getProducttype();
-		
-		$producttypeids = explode(",",$producttypeids);
-		
-		$collection->addAttributeToFilter('type_id', array('in' => $producttypeids));
 
-		if(!Mage::helper('fsecommerce_convertizer')->getImageFilterEnabled()){
-			$collection->addAttributeToFilter('image', array('neq' => 'no_selection'));
-		}
-		
 		 // get the total amout of entries
 		$entries    = count($collection);
 		// delete files first
@@ -72,17 +63,21 @@ class Fsecommerce_Convertizer_Model_Feed
 				'parent_id',
 				'variant_attribute',
 				'variant_attribute_value',
+				'shipping_status',
 				'shipping',
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute01()),
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute02()),
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute03()),
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute04()),
 				'custom_attribute_' . $this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getCustomAttribute05()),
+				$this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute01()),
+				$this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute02()),
+				$this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute03()),
+				$this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute04()),
+				$this->getAttributeLabel(Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute05()),
+				'keywords',
 				'title',
 				'description',
-				'brand',
-				'gtin',
-				'color',
 				'image_link',
 				'additional_image_link_1',
 				'additional_image_link_2',
@@ -95,16 +90,11 @@ class Fsecommerce_Convertizer_Model_Feed
 				'additional_image_link_9',
 				'additional_image_link_10',
 				'availability',
-				'material',
 				'google_product_category',
 				'product_type',
 				'link',
 				'price',
 				'sale_price',
-				'sale_price_effective_date',
-				'size',
-				'weight',
-				'energy_efficiency_class',
 			)
 		);
 
@@ -130,17 +120,21 @@ class Fsecommerce_Convertizer_Model_Feed
 				$this->getParentSKU($product),
 				$this->getVariantsLabel($product),
 				$this->getVariantsValue($product),
+				$this->getGoogleShipping($product),
 				$this->getGeneralShipping($product),
 				$this->getCustomAttr01($product),
 				$this->getCustomAttr02($product),
 				$this->getCustomAttr03($product),
 				$this->getCustomAttr04($product),
 				$this->getCustomAttr05($product),
+				$this->getAdditionalAttr01($product),
+				$this->getAdditionalAttr02($product),
+				$this->getAdditionalAttr03($product),
+				$this->getAdditionalAttr04($product),
+				$this->getAdditionalAttr05($product),
+				$this->getKeywords($product),
 				$product->getName(),
-				strip_tags($product->getDescription()),
-				$product->getAttributeText('manufacturer'),
-				$product->getEan(),
-				$product->getColorName(),
+				$product->getDescription(),
 				Mage::getModel('catalog/product_media_config')->getMediaUrl($product->getImage()),
 				isset($gallery['images'][0]) ? $mediaUrl . 'catalog/product' . $gallery['images'][0]['file'] : '',
 				isset($gallery['images'][1]) ? $mediaUrl . 'catalog/product' . $gallery['images'][1]['file'] : '',
@@ -153,16 +147,11 @@ class Fsecommerce_Convertizer_Model_Feed
 				isset($gallery['images'][8]) ? $mediaUrl . 'catalog/product' . $gallery['images'][8]['file'] : '',
 				isset($gallery['images'][9]) ? $mediaUrl . 'catalog/product' . $gallery['images'][9]['file'] : '',
 				($product->getStatus() == 1 ? 'available' : 'not available'),
-				$product->getMaterialText(),
-				$product->getGoogleProductCategory(),
+				$this->getProductCategory($product),
 				$product->getProductType(),
 				$BaseURL . $product->getUrlPath(),
 				$product->getPrice(),
 				$product->getFinalPrice() != $product->getPrice() ? $product->getFinalPrice() : '',
-				$this->get_sale_price_effective_date($product->getPrice(), $product->getFinalPrice(), $product->getSpecialFromDate(), $product->getSpecialToDate()),
-				$product->getDimension(),
-				$product->getWeight(),
-				$product->getEnergyEfficiency(),
 			);
 
 			if($i % $chunksize == 0 || $i == $entries)
@@ -270,6 +259,96 @@ class Fsecommerce_Convertizer_Model_Feed
 		}
 	}
 	
+	public function getAdditionalAttr01($product){
+		$AdditionalAttribute = Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute01();
+		if($AdditionalAttribute && $AdditionalAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($AdditionalAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	public function getAdditionalAttr02($product){
+		$AdditionalAttribute = Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute02();
+		if($AdditionalAttribute && $AdditionalAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($AdditionalAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	public function getAdditionalAttr03($product){
+		$AdditionalAttribute = Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute03();
+		if($AdditionalAttribute && $AdditionalAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($AdditionalAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	public function getAdditionalAttr04($product){
+		$AdditionalAttribute = Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute04();
+		if($AdditionalAttribute && $AdditionalAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($AdditionalAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	public function getAdditionalAttr05($product){
+		$AdditionalAttribute = Mage::helper('fsecommerce_convertizer')->getAdditionalAttribute05();
+		if($AdditionalAttribute && $AdditionalAttribute != "empty"){
+			$result = $product->getResource()->getAttribute($AdditionalAttribute)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getProductCategory($product){
+		$category = Mage::helper('fsecommerce_convertizer')->getProductCategory();
+		if($category && $category != "empty"){
+			$result = $product->getResource()->getAttribute($category)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}
+
+	public function getKeywords($product){
+		$keywords = Mage::helper('fsecommerce_convertizer')->getKeywords();
+		if($keywords && $keywords != "empty"){
+			$result = $product->getResource()->getAttribute($keywords)
+			->getFrontend()->getValue($product);
+			return $result;
+		}else{
+			return false;
+		}
+	}	
+	
+	
+	public function getGoogleShipping($product){
+		
+		$attrCode	= Mage::helper('fsecommerce_convertizer')->getGoogleShipping();
+		if($attrCode && $attrCode != "empty"){
+			$result = $product->getResource()->getAttribute($attrCode)
+			->getFrontend()->getValue($product);
+		}else{
+			return false;
+		}
+		if($result){
+			return $result;
+		}else{
+			return false;
+		}
+		
+	}
 	
 	public function getGeneralShipping($product){
 		

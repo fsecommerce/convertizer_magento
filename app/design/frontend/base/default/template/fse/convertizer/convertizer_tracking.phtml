@@ -1,9 +1,4 @@
 <?php
-/**
- * 
- */
-?>
-<?php
 	$_order    			= Mage::getModel('sales/order')->load(Mage::getSingleton('checkout/session')->getLastOrderId());
 	$_orderIncrement 	= Mage::getSingleton('checkout/session')->getLastRealOrderId();
 	$_items    			= $_order->getAllItems();
@@ -24,7 +19,7 @@
 			js.type = 'text/javascript';
 			js.async = true;
 			js.src = ('https:' == document.location.protocol ?
-'https://' : 'http://') + 'convertizer.com/static/convertizer.js';
+'https://' : 'http://') + 'app.convertizer.com/static/convertizer.js';
 		var tag = document.getElementsByTagName('script')[0];
 		tag.parentNode.insertBefore(js, tag);
 	})();
