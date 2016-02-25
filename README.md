@@ -13,10 +13,7 @@ With the help of this module your conversion rate will be increased and drop-off
 <li>Drop your backend cache of Magento</li>
 <li>Start earning more money with convertizer</li>
 </ol>
-<h2>Please note: </h2>
-if your product feed contains product ID's instead of sku please write an email to: <strong>support@convertizer.com</strong><br/>
-We will take care of it right away!
-<p>
+
 <h2>The module is able to generate the needed convertizer feed with the following fields</h2>
 id | The product article number<br/>
 parent_id | If the line is a variant of a product, it places here the "SKU" (product article number) of the master product<br/>
@@ -43,9 +40,7 @@ google_product_category | The category of the product, seperated with ">" (even 
 link | The URL of the product detail page<br/>
 price | The price of the product without currency information. The currency information is definied in the first step of the landingpage setup<br/>
 sale price | reduced price if available. The price will be displayed strikedthrough and this price will appear<br/>
-sale_price_effective_date | information about the period the sale price is valid. Format is strictly eg 2015-03-05T00:00-0000/2015-09-01T00:00-0000 (from/till)
 search_title | <br/>
-energy_efficiency_class | the EU energy efficiency class category, i.e. A++<br/>
 <p>
 <p>Most of the fields will be exported into the feed automaticly. Others you are able to set in the modules settings. Those are described there again.</p>
 
