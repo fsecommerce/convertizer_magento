@@ -87,6 +87,7 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 				'link',
 				'price',
 				'sale_price',
+				'no_singlepage'
 			)
 		);
 		
@@ -145,6 +146,7 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 				$BaseURL . $product->getUrlPath(),
 				$product->getPrice(),
 				$product->getFinalPrice() != $product->getPrice() ? $product->getFinalPrice() : '',
+				$this->getExcludeOptions($product)
 			);
 			
 
@@ -444,6 +446,20 @@ class Fsecommerce_Convertizer_Adminhtml_FeedController extends Mage_Adminhtml_Co
 		}
 		$result = rtrim($result, ",");
 		return $result;
+	}
+	
+	public function getExcludeOptions($product){
+		if(Mage::helper('fsecommerce_convertizer')->excludeOptions()){
+			$opts = Mage::getSingleton('catalog/product_option')->getProductOptionCollection($product);
+			$optsSize = $opts->getSize();
+			if($optsSize){
+				return '1';
+			}else{
+				return '';
+			}
+		}else{
+			return '';
+		}
 	}
 	
 	public function joinFiles(array $files, $result) {
