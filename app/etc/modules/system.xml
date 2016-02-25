@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<fsecommerce_convertizer translate="label" module="fsecommerce_convertizer">
+			<label><![CDATA[<img src="http://fs-ecommerce.com/convertizer/convertizer.png" alt="Convertizer" height="30" style="vertical-align:middle;margin-left:-1px;margin-right: 10px;"/>]]>Convertizer</label>
+			<sort_order>0</sort_order>
+		</fsecommerce_convertizer>
+	</tabs>
+    <sections>
+        <fsecommerce_convertizer translate="label" module="fsecommerce_convertizer">
+            <label>Convertizer Settings</label>
+            <tab>fsecommerce_convertizer</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <feed translate="label">
+					<label>Feed Settings (choose storeview to generate feed by click)</label>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<check translate="label">
+							<label>Generate Convertizer Feed</label>
+							<frontend_type>button</frontend_type>
+							<frontend_model>fsecommerce_convertizer/adminhtml_feed</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>0</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>1</show_in_store>
+						</check>
+						<shipping_google translate="label">
+							<label>Attribute for Google Shipping Description</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</shipping_google>
+						<shipping_general translate="label">
+							<label>Attribute for General Shipping Values</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</shipping_general>
+						<custom_attr_01 translate="label">
+							<label>Custom Attribut to Show 01</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</custom_attr_01>
+						<custom_attr_02 translate="label">
+							<label>Custom Attribut to Show 02</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</custom_attr_02>
+						<custom_attr_03 translate="label">
+							<label>Custom Attribut to Show 03</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</custom_attr_03>
+						<custom_attr_04 translate="label">
+							<label>Custom Attribut to Show 04</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</custom_attr_04>
+						<custom_attr_05 translate="label">
+							<label>Custom Attribut to Show 05</label>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</custom_attr_05>
+						<additional_attr_01 translate="label">
+							<label>Additional Attribut 01</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_01>
+						<additional_attr_02 translate="label">
+							<label>Additional Attribut 02</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_02>
+						<additional_attr_03 translate="label">
+							<label>Additional Attribut 03</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_03>
+						<additional_attr_04 translate="label">
+							<label>Additional Attribut 04</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_04>
+						<additional_attr_05 translate="label">
+							<label>Additional Attribut 05</label>
+							<comment>Choose an additional attribute to be used for convertizer engine</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_attr_05>
+						<product_category translate="label">
+							<label>Product Category Tree</label>
+							<comment>Choose the attribute that holds the products category tree (cat > subcat ...)</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>140</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</product_category>
+						<keywords translate="label">
+							<label>Keyword Attribut</label>
+							<comment>Choose an attribute which contains keywords for the product</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_attribute</source_model>
+							<sort_order>150</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</keywords>
+						<category_filter_enabled translate="label">
+                            <label>Activate Category Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_filter_enabled>
+						<category_filter translate="label">
+							<label>Generate Feed for Category only:</label>
+							<depends><category_filter_enabled>1</category_filter_enabled></depends>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_category</source_model>
+							<sort_order>170</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</category_filter>
+						<exclude_options>
+							<label>Redirect Products with Individual Options</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</exclude_options>
+					</fields>
+				</feed>
+				<cron>
+					<label>Cron Settings</label>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<cron_enabled translate="label">
+                            <label>Activate Cron</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cron_enabled>
+						<default_store translate="label">
+							<label>Set Cronjob Default Store</label>
+							<depends><cron_enabled>1</cron_enabled></depends>
+							<frontend_type>select</frontend_type>
+							<source_model>fsecommerce_convertizer/adminhtml_store</source_model>
+							<comment><![CDATA[<b>Set the default Store for Product Export by Cron</b>]]></comment>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</default_store>
+					</fields>
+				</cron>
+				<tracking>
+					<label>Tracking</label>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+                            <label>Activate Tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<track translate="label">
+							<label>Convertizer Tracking Code</label>
+							<depends><enabled>1</enabled></depends>
+							<frontend_type>text</frontend_type>
+							<comment><![CDATA[<b>Type in your Convertizer Tracking ID</b>]]></comment>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</track>
+					</fields>
+				</tracking>
+            </groups>
+        </fsecommerce_convertizer>
+    </sections>
+</config>
