@@ -4,7 +4,7 @@
 		Mage::log($sku,Null,'convertizer.log');
 		$redirectUrl	= Mage::helper('core/url')->getHomeUrl();
 		if(!empty($sku)){
-			$_product 	= Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);  
+			$_product 	= Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 			if($_product && $_product->isSaleable()){
 				try{
 					$product 		= Mage::getModel('catalog/product')->load($_product->getId());
@@ -13,11 +13,11 @@
 					$cart->addProduct($product, array( 'product_id' => $product->getId(), 'qty' => 1));
 					$cart->save();
 					$params = $this->getRequest()->getParams();
-					unset($params[sku]);
-					unset($params[orig_link]);
+					unset($params['sku']);
+					unset($params['orig_link']);
 					Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
 					$addparams = "?";
-					
+
 					foreach($params as $key => $param){
 						$addparams .= $key . '=' . $param . '&';
 					}
@@ -45,7 +45,7 @@
 			$cart 			= Mage::getModel('checkout/cart');
 			$cart->init();
 			foreach($basket[0] as $k => $v){
-				$_product 	= Mage::getModel('catalog/product')->loadByAttribute('sku', $k);  
+				$_product 	= Mage::getModel('catalog/product')->loadByAttribute('sku', $k);
 				if($_product && $_product->isSaleable()){
 					try{
 						$product 		= Mage::getModel('catalog/product')->load($_product->getId());
@@ -58,11 +58,20 @@
 				}
 			}
 			$cart->save();
-			$redirectUrl	= Mage::helper('checkout/cart')->getCartUrl();
-			$this->_redirectUrl($redirectUrl);
-		}else{
-			$this->_redirectUrl($redirectUrl);
+            $params = $this->getRequest()->getParams();
+            unset($params['basket']);
+            unset($params['orig_link']);
+            Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+            $addparams = "?";
+
+            foreach ($params as $key => $param) {
+                $addparams .= $key . '=' . $param . '&';
+            }
+            $addparams   = rtrim($addparams, "&");
+            $redirectUrl = Mage::helper('checkout/cart')->getCartUrl() . $addparams;
 		}
+
+        $this->_redirectUrl($redirectUrl);
 	}
 
 }
