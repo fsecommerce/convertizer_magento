@@ -18,7 +18,7 @@ class Fsecommerce_Convertizer_Model_Feed
 							->getWebsite()
 							->getDefaultGroup()
 							->getDefaultStoreId();
-		if(!isset($storeId) || $storeId = ""){
+		if(!isset($storeId) || $storeId == ""){
 			$storeId = $defaultStore;
 		}
 		
@@ -35,11 +35,13 @@ class Fsecommerce_Convertizer_Model_Feed
 			$collection = Mage::getResourceModel('catalog/product_collection')
 				->setStoreId($storeId)
 				->joinField('category_id','catalog/category_product','category_id','product_id=entity_id',null,'left')
-				->addAttributeToFilter('category_id', array('in' => $categoryids));
+				->addAttributeToFilter('category_id', array('in' => $categoryids))
+				->addStoreFilter();
 				$collection->getSelect()->group('e.entity_id');
 		}else{
 			$collection = Mage::getModel('catalog/product')->getCollection()
-			->setStoreId($storeId);
+			->setStoreId($storeId)
+			->addStoreFilter();
 		}
 	
 		$collection->addFieldToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
