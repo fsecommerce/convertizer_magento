@@ -2,7 +2,7 @@
 <config>
 	<tabs>
 		<fsecommerce_convertizer translate="label" module="fsecommerce_convertizer">
-			<label><![CDATA[<img src="https://master-01.convertizer.com/media/sales/store/logo/default/convertizer_extension_logo.png" alt="Convertizer" height="30" style="vertical-align:middle;margin-left:-1px;margin-right: 10px;"/>]]>Convertizer</label>
+			<label><![CDATA[<img src="https://convertizer.com/de/wp-content/themes/convertizer-master/images/logo/convertizer.svg" alt="Convertizer" height="30" style="vertical-align:middle;margin-left:-1px;margin-right: 10px;"/>]]>Convertizer</label>
 			<sort_order>0</sort_order>
 		</fsecommerce_convertizer>
 	</tabs>
